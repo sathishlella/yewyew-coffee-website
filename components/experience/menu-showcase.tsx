@@ -82,7 +82,7 @@ export function MenuShowcase() {
               ref={(node) => {
                 cardRefs.current[index] = node;
               }}
-              className="group relative overflow-hidden rounded-[20px] border border-white/12 bg-white/[0.055] shadow-[0_28px_120px_rgba(0,0,0,0.32)] backdrop-blur-xl shrink-0 w-[85vw] snap-center flex flex-col md:block md:w-auto md:rounded-[8px] md:p-8"
+              className="group relative overflow-hidden rounded-[20px] border border-white/20 bg-white/10 shadow-[inset_0_1px_1px_rgba(255,255,255,0.25),0_28px_120px_rgba(0,0,0,0.32)] backdrop-blur-2xl shrink-0 w-[85vw] snap-center flex flex-col md:block md:w-auto md:rounded-[8px] md:p-8"
               onMouseEnter={() => {
                 setActiveItem(item);
                 setTrailVisible(true);
