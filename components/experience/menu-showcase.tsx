@@ -57,7 +57,7 @@ export function MenuShowcase() {
     <section
       ref={sectionRef}
       id="menu"
-      className="relative min-h-[180vh] px-0 py-28 md:px-4 md:py-40"
+      className="relative min-h-0 md:min-h-[180vh] px-0 py-28 md:px-4 md:py-40"
     >
       <ImageCursorTrail activeItem={activeItem} visible={trailVisible} />
       <div className="mx-auto grid max-w-7xl gap-10 md:grid-cols-[0.8fr_1.2fr]">
