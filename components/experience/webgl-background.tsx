@@ -17,6 +17,8 @@ const LiquidMaterial = shaderMaterial(
     uIndex: 0,
     uHover: 0,
     uBrightness: 1.0,
+    uSaturation: 0.6,
+    uCoffeeTint: new THREE.Color(0.04, 0.05, 0.06),
     uMouse: new THREE.Vector2(0.5, 0.5)
   },
   liquidVertexShader,
@@ -33,6 +35,8 @@ type LiquidShaderMaterial = THREE.ShaderMaterial & {
   uIndex: number;
   uHover: number;
   uBrightness: number;
+  uSaturation: number;
+  uCoffeeTint: THREE.Color;
   uMouse: THREE.Vector2;
 };
 
@@ -47,6 +51,8 @@ declare global {
         uOpacity?: number;
         uIndex?: number;
         uBrightness?: number;
+        uSaturation?: number;
+        uCoffeeTint?: THREE.Color;
       };
     }
   }
@@ -58,7 +64,9 @@ function LiquidImagePlane({
   position,
   scale,
   rotation,
-  brightness = 1.0
+  brightness = 1.0,
+  saturation = 0.6,
+  coffeeTint = new THREE.Color(0.04, 0.05, 0.06)
 }: {
   url: string;
   index: number;
@@ -66,6 +74,8 @@ function LiquidImagePlane({
   scale: [number, number, number];
   rotation: [number, number, number];
   brightness?: number;
+  saturation?: number;
+  coffeeTint?: THREE.Color;
 }) {
   const texture = useTexture(url);
   const material = useRef<LiquidShaderMaterial>(null);
@@ -100,6 +110,8 @@ function LiquidImagePlane({
         uOpacity={0.4}
         uIndex={index}
         uBrightness={brightness}
+        uSaturation={saturation}
+        uCoffeeTint={coffeeTint}
         transparent
         depthWrite={false}
       />
@@ -159,7 +171,15 @@ function MobileCinematicScene() {
       <pointLight position={[-2, -1, 2]} intensity={3} color="#c8b8a8" />
       <pointLight position={[0, 0, 1]} intensity={2} color="#ffffff" />
       {mobileUrls.map((url, index) => (
-        <LiquidImagePlane key={url} url={url} index={index} {...mobilePlanes[index]} brightness={2.4} />
+        <LiquidImagePlane 
+          key={url} 
+          url={url} 
+          index={index} 
+          {...mobilePlanes[index]} 
+          brightness={2.8} 
+          saturation={1.2} 
+          coffeeTint={new THREE.Color(0.18, 0.06, 0.01)} 
+        />
       ))}
     </>
   );
