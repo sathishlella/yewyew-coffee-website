@@ -94,13 +94,24 @@ export function MenuShowcase() {
                 style={{ backgroundColor: item.accent }}
               />
 
-              {/* Mobile-only Top Image */}
-              <div className="h-56 w-full shrink-0 md:hidden">
-                <img 
-                  src={item.image} 
-                  alt={item.name} 
-                  className="h-full w-full object-cover" 
-                />
+              {/* Mobile-only Top Media */}
+              <div className="h-56 w-full shrink-0 md:hidden bg-black/20">
+                {item.video ? (
+                  <video 
+                    src={item.video} 
+                    autoPlay 
+                    loop 
+                    muted 
+                    playsInline 
+                    className="h-full w-full object-cover" 
+                  />
+                ) : (
+                  <img 
+                    src={item.image} 
+                    alt={item.name} 
+                    className="h-full w-full object-cover" 
+                  />
+                )}
               </div>
 
               {/* Content Wrapper */}
