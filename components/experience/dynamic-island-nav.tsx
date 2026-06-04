@@ -28,12 +28,12 @@ export function DynamicIslandNav() {
         className="fixed left-1/2 top-0 z-[1000]"
         style={{ width, y, x: "-50%" }}
       >
-        <nav className="flex h-14 items-center justify-between rounded-full border border-white/12 bg-black/28 px-3 shadow-island backdrop-blur-md">
-          <a href="#home" className="group flex items-center gap-2 pl-2">
+        <nav className="flex h-14 items-center justify-end rounded-full border border-transparent bg-transparent px-3 md:justify-between md:border-white/12 md:bg-black/28 md:shadow-island md:backdrop-blur-md">
+          <a href="#home" className="group hidden items-center gap-2 pl-2 md:flex">
             <span className="grid size-8 place-items-center rounded-full border border-white/10 bg-white/8">
               <Coffee className="size-4 text-porcelain" />
             </span>
-            <span className="hidden font-mono text-[10px] uppercase tracking-[0.28em] text-white/78 sm:block">
+            <span className="font-mono text-[10px] uppercase tracking-[0.28em] text-white/78">
               yewyew
             </span>
           </a>
@@ -57,14 +57,14 @@ export function DynamicIslandNav() {
             <Sparkles className="size-3.5 transition group-hover:rotate-12" />
             <span>reserve</span>
           </a>
-          {/* Mobile hamburger button */}
+          {/* Mobile floating coffee cup button */}
           <button
             type="button"
-            className="inline-flex size-10 items-center justify-center rounded-full bg-porcelain text-obsidian transition hover:bg-chrome md:hidden"
+            className="inline-flex size-10 items-center justify-center rounded-full border border-white/12 bg-black/28 text-porcelain shadow-island backdrop-blur-md transition hover:bg-white/10 md:hidden"
             onClick={() => setMobileOpen((prev) => !prev)}
             aria-label={mobileOpen ? "Close menu" : "Open menu"}
           >
-            {mobileOpen ? <X className="size-4" /> : <Menu className="size-4" />}
+            {mobileOpen ? <X className="size-4" /> : <Coffee className="size-4" />}
           </button>
         </nav>
       </motion.header>
