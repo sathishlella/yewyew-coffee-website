@@ -80,12 +80,17 @@ export default function FooterSection() {
             <div className="space-y-5">
               <div className="flex items-start gap-4">
                 <MapPin className="mt-1 size-5 shrink-0 text-white/50" />
-                <div className="text-sm leading-relaxed text-white/70">
-                  <strong className="block text-white">Bangunan Ka Yin</strong>
+                <a 
+                  href="https://www.google.com/maps/search/?api=1&query=Yew+Yew+Coffee+Chinatown+Kuala+Lumpur"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group/address text-sm leading-relaxed text-white/70 transition-colors hover:text-white"
+                >
+                  <strong className="block text-white group-hover/address:text-chrome transition-colors">Bangunan Ka Yin</strong>
                   63D, FB1 First Floor, <br />
                   Jalan Sultan, Kuala Lumpur, <br />
                   Malaysia 50000
-                </div>
+                </a>
               </div>
 
               <div className="flex items-start gap-4">
