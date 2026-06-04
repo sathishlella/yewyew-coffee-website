@@ -148,7 +148,7 @@ function MobileCinematicScene() {
     { position: [0.0, 0.0, -2.0] as [number, number, number], scale: [3.5, 5.5, 1] as [number, number, number], rotation: [0.0, 0.0, 0.0] as [number, number, number] }
   ];
 
-  const mobileUrls = [heroTextureUrls[0]];
+  const mobileUrls = ["/images/instagram/yewyewcoffee_klimg1.jpg"];
 
   return (
     <>
