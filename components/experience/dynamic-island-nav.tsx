@@ -11,14 +11,11 @@ export function DynamicIslandNav() {
   const width = useTransform(scrollY, [0, 520], ["min(92vw, 760px)", "min(92vw, 560px)"]);
   const y = useTransform(scrollY, [0, 520], [24, 14]);
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [isAndroid, setIsAndroid] = useState(false);
 
   const closeMobile = useCallback(() => setMobileOpen(false), []);
 
-  // Detect Android & close mobile menu on resize to desktop
+  // Close mobile menu on resize to desktop
   useEffect(() => {
-    setIsAndroid(/android/i.test(navigator.userAgent));
-
     const mq = window.matchMedia("(min-width: 768px)");
     const handler = () => { if (mq.matches) setMobileOpen(false); };
     mq.addEventListener("change", handler);
@@ -76,38 +73,45 @@ export function DynamicIslandNav() {
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
-            className={`fixed inset-0 z-[999] flex flex-col items-center justify-center gap-6 md:hidden ${isAndroid ? "bg-black" : "bg-black/92 backdrop-blur-xl"}`}
+            className="fixed inset-0 z-[999] md:hidden"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
           >
-            {navItems.map((item, index) => (
+            {/* Layer 1: Solid black base — blocks all blend-through */}
+            <div className="absolute inset-0 bg-black" />
+            {/* Layer 2: Frosted glass effect on top */}
+            <div className="absolute inset-0 bg-white/[0.03] backdrop-blur-xl" />
+            {/* Layer 3: Menu content */}
+            <div className="relative z-10 flex h-full flex-col items-center justify-center gap-6">
+              {navItems.map((item, index) => (
+                <motion.a
+                  key={item}
+                  href={`#${item}`}
+                  onClick={closeMobile}
+                  className="font-display text-3xl font-black uppercase tracking-wide text-porcelain transition hover:text-chrome"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  transition={{ delay: index * 0.06, duration: 0.35 }}
+                >
+                  {item}
+                </motion.a>
+              ))}
               <motion.a
-                key={item}
-                href={`#${item}`}
+                href="#reserve"
                 onClick={closeMobile}
-                className="font-display text-3xl font-black uppercase tracking-wide text-porcelain transition hover:text-chrome"
+                className="mt-4 inline-flex items-center gap-2 rounded-full bg-porcelain px-6 py-3 text-xs font-semibold uppercase tracking-[0.12em] text-obsidian transition hover:bg-chrome"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -10 }}
-                transition={{ delay: index * 0.06, duration: 0.35 }}
+                transition={{ delay: navItems.length * 0.06, duration: 0.35 }}
               >
-                {item}
+                <Sparkles className="size-3.5" />
+                reserve
               </motion.a>
-            ))}
-            <motion.a
-              href="#reserve"
-              onClick={closeMobile}
-              className="mt-4 inline-flex items-center gap-2 rounded-full bg-porcelain px-6 py-3 text-xs font-semibold uppercase tracking-[0.12em] text-obsidian transition hover:bg-chrome"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
-              transition={{ delay: navItems.length * 0.06, duration: 0.35 }}
-            >
-              <Sparkles className="size-3.5" />
-              reserve
-            </motion.a>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>
