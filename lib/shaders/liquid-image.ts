@@ -37,8 +37,6 @@ export const liquidFragmentShader = `
   uniform float uIndex;
   uniform float uHover;
   uniform float uBrightness;
-  uniform float uSaturation;
-  uniform vec3 uCoffeeTint;
   uniform vec2 uMouse;
 
   mat2 rotate2d(float angle) {
@@ -108,9 +106,9 @@ export const liquidFragmentShader = `
     vec3 color = chromaticSample(warpedUv, aberration);
 
     float luma = dot(color, vec3(0.299, 0.587, 0.114));
-    color = mix(vec3(luma), color, uSaturation);
+    color = mix(vec3(luma), color, 0.6);
     color *= (0.35 + 0.1 * smoothstep(0.1, 0.95, uv.y)) * uBrightness;
-    color += pow(max(0.0, 1.0 - length(centered) * 1.55), 3.0) * uCoffeeTint;
+    color += pow(max(0.0, 1.0 - length(centered) * 1.55), 3.0) * vec3(0.04, 0.05, 0.06);
 
     float grain = hash(uv * vec2(1200.0, 900.0) + uTime);
     color += (grain - 0.5) * 0.03;
