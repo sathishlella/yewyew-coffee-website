@@ -107,7 +107,18 @@ export function MenuShowcase() {
                 className="absolute right-0 top-0 h-44 w-44 opacity-30 blur-3xl transition group-hover:opacity-60"
                 style={{ backgroundColor: item.accent }}
               />
-              <div className="relative grid gap-7 lg:grid-cols-[1fr_auto] lg:items-end">
+
+              {/* Mobile Ambient Background */}
+              <div className="absolute inset-0 z-0 block md:hidden opacity-40">
+                <img 
+                  src={item.image} 
+                  alt={item.name} 
+                  className="h-full w-full object-cover mix-blend-luminosity grayscale-[30%]" 
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-black/20" />
+              </div>
+
+              <div className="relative z-10 grid gap-7 lg:grid-cols-[1fr_auto] lg:items-end">
                 <div>
                   <div className="flex items-center gap-3">
                     <span className="grid size-9 place-items-center rounded-full border border-white/10 bg-black/35">
