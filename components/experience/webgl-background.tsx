@@ -16,6 +16,7 @@ const LiquidMaterial = shaderMaterial(
     uOpacity: 1,
     uIndex: 0,
     uHover: 0,
+    uBrightness: 1.0,
     uMouse: new THREE.Vector2(0.5, 0.5)
   },
   liquidVertexShader,
@@ -31,6 +32,7 @@ type LiquidShaderMaterial = THREE.ShaderMaterial & {
   uOpacity: number;
   uIndex: number;
   uHover: number;
+  uBrightness: number;
   uMouse: THREE.Vector2;
 };
 
@@ -44,6 +46,7 @@ declare global {
         uTexture?: THREE.Texture;
         uOpacity?: number;
         uIndex?: number;
+        uBrightness?: number;
       };
     }
   }
@@ -54,13 +57,15 @@ function LiquidImagePlane({
   index,
   position,
   scale,
-  rotation
+  rotation,
+  brightness = 1.0
 }: {
   url: string;
   index: number;
   position: [number, number, number];
   scale: [number, number, number];
   rotation: [number, number, number];
+  brightness?: number;
 }) {
   const texture = useTexture(url);
   const material = useRef<LiquidShaderMaterial>(null);
@@ -94,6 +99,7 @@ function LiquidImagePlane({
         uTexture={texture}
         uOpacity={0.4}
         uIndex={index}
+        uBrightness={brightness}
         transparent
         depthWrite={false}
       />
@@ -152,7 +158,7 @@ function MobileCinematicScene() {
       <pointLight position={[2, 3, 4]} intensity={4} color="#e8edf2" />
       <pointLight position={[-2, -1, 2]} intensity={2.5} color="#c8b8a8" />
       {mobileUrls.map((url, index) => (
-        <LiquidImagePlane key={url} url={url} index={index} {...mobilePlanes[index]} />
+        <LiquidImagePlane key={url} url={url} index={index} {...mobilePlanes[index]} brightness={2.8} />
       ))}
     </>
   );
