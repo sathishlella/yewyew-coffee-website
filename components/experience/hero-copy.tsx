@@ -23,7 +23,7 @@ export function HeroCopy() {
         <motion.p
           initial={{ opacity: 0, y: 18 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 2.2, duration: 0.8 }}
+          transition={{ delay: 0.8, duration: 0.8 }}
           className="mb-5 font-mono text-[10px] uppercase tracking-[0.48em] text-white/55"
         >
           a quiet pause in the noise / kuala lumpur
@@ -31,7 +31,7 @@ export function HeroCopy() {
         <motion.h1
           initial={{ clipPath: "inset(0 0 100% 0)" }}
           animate={{ clipPath: "inset(0 0 0% 0)" }}
-          transition={{ delay: 2.45, duration: 1.2, ease: [0.76, 0, 0.24, 1] }}
+          transition={{ delay: 0.9, duration: 1.2, ease: [0.76, 0, 0.24, 1] }}
           className="text-balance font-display text-[clamp(3.4rem,12vw,11rem)] font-black uppercase leading-[0.73] tracking-normal mix-blend-difference"
           style={{ rotateX, transformStyle: "preserve-3d" }}
         >
@@ -41,7 +41,7 @@ export function HeroCopy() {
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 2.8, duration: 0.8 }}
+          transition={{ delay: 1.1, duration: 0.8 }}
           className="mx-auto mt-8 flex max-w-xl flex-col items-center gap-5 text-center"
         >
           <p className="text-balance text-sm leading-7 text-white/68 sm:text-base">
