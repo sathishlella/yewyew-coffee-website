@@ -144,8 +144,8 @@ function CinematicScene() {
 function MobileCinematicScene() {
   const { viewport } = useThree();
   const mobilePlanes = [
-    { position: [-0.1, 1.2, -1.8] as [number, number, number], scale: [1.4, 1.4, 1] as [number, number, number], rotation: [0.03, 0.15, -0.08] as [number, number, number] },
-    { position: [0.2, -1.1, -2.2] as [number, number, number], scale: [1.2, 1.2, 1] as [number, number, number], rotation: [-0.03, -0.12, 0.1] as [number, number, number] },
+    { position: [0.0, 1.2, -1.8] as [number, number, number], scale: [1.8, 1.8, 1] as [number, number, number], rotation: [0.03, 0.05, -0.04] as [number, number, number] },
+    { position: [0.0, -1.1, -2.2] as [number, number, number], scale: [1.9, 1.9, 1] as [number, number, number], rotation: [-0.03, -0.05, 0.06] as [number, number, number] },
   ];
 
   const mobileUrls = [heroTextureUrls[0], heroTextureUrls[1]];
