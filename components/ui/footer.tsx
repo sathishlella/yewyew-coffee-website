@@ -192,7 +192,7 @@ export default function FooterSection() {
             rel="noopener noreferrer"
             className="mt-3 block font-mono text-[10px] uppercase tracking-[0.24em] text-white/20 transition-colors hover:text-white/60"
           >
-            Designed & Developed by Sathish Lella
+            Designed & Developed by <span className="text-white font-bold">Sathish Lella</span>
           </a>
         </div>
       </div>
