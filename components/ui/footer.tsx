@@ -181,11 +181,19 @@ export default function FooterSection() {
           </div>
         </div>
 
-        {/* Bottom copyright */}
+        {/* Bottom copyright & Developer Signature */}
         <div className="mt-12 border-t border-white/10 pt-6 text-center">
-          <span className="font-mono text-[10px] uppercase tracking-[0.24em] text-white/40">
+          <p className="font-mono text-[10px] uppercase tracking-[0.24em] text-white/40">
             © {new Date().getFullYear()} Yew Yew Coffee. All rights reserved.
-          </span>
+          </p>
+          <a
+            href="https://www.linkedin.com/in/sathishlella/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-3 block font-mono text-[10px] uppercase tracking-[0.24em] text-white/20 transition-colors hover:text-white/60"
+          >
+            Designed & Developed by Sathish Lella
+          </a>
         </div>
       </div>
     </footer>
