@@ -17,7 +17,7 @@ export function HeroCopy() {
       className="relative grid min-h-screen place-items-center px-4 pt-28"
     >
       <motion.div
-        className="perspective-1200 relative mx-auto max-w-[1500px] text-center"
+        className="perspective-1200 isolate relative mx-auto max-w-[1500px] text-center"
         style={{ y, opacity }}
       >
         <motion.p
