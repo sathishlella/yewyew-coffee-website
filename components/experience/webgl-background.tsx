@@ -144,21 +144,22 @@ function CinematicScene() {
 function MobileCinematicScene() {
   const { viewport } = useThree();
   const mobilePlanes = [
-    { position: [0.0, 1.2, -1.8] as [number, number, number], scale: [1.8, 1.8, 1] as [number, number, number], rotation: [0.03, 0.05, -0.04] as [number, number, number] },
-    { position: [0.0, -1.1, -2.2] as [number, number, number], scale: [1.9, 1.9, 1] as [number, number, number], rotation: [-0.03, -0.05, 0.06] as [number, number, number] },
+    // A single, massive plane scaled up to push all edges completely off-screen
+    { position: [0.0, 0.0, -2.0] as [number, number, number], scale: [3.5, 5.5, 1] as [number, number, number], rotation: [0.0, 0.0, 0.0] as [number, number, number] }
   ];
 
-  const mobileUrls = [heroTextureUrls[0], heroTextureUrls[1]];
+  const mobileUrls = [heroTextureUrls[0]];
 
   return (
     <>
       <color attach="background" args={["#060606"]} />
       <fog attach="fog" args={["#060606", 5, 12]} />
-      <ambientLight intensity={0.35} />
-      <pointLight position={[2, 3, 4]} intensity={4} color="#e8edf2" />
-      <pointLight position={[-2, -1, 2]} intensity={2.5} color="#c8b8a8" />
+      <ambientLight intensity={0.4} />
+      <pointLight position={[2, 3, 4]} intensity={5} color="#e8edf2" />
+      <pointLight position={[-2, -1, 2]} intensity={3} color="#c8b8a8" />
+      <pointLight position={[0, 0, 1]} intensity={2} color="#ffffff" />
       {mobileUrls.map((url, index) => (
-        <LiquidImagePlane key={url} url={url} index={index} {...mobilePlanes[index]} brightness={1.8} />
+        <LiquidImagePlane key={url} url={url} index={index} {...mobilePlanes[index]} brightness={1.6} />
       ))}
     </>
   );
