@@ -3,7 +3,7 @@
 import { Canvas, extend, useFrame, useThree } from "@react-three/fiber";
 import { shaderMaterial, useTexture } from "@react-three/drei";
 import { Bloom, EffectComposer, Vignette } from "@react-three/postprocessing";
-import { Suspense, useMemo, useRef } from "react";
+import { Suspense, useEffect, useMemo, useRef, useState } from "react";
 import * as THREE from "three";
 import { heroTextureUrls } from "@/lib/cafe-data";
 import { liquidFragmentShader, liquidVertexShader } from "@/lib/shaders/liquid-image";
@@ -135,21 +135,54 @@ function CinematicScene() {
   );
 }
 
+function MobileCinematicScene() {
+  const { viewport } = useThree();
+  const mobilePlanes = [
+    { position: [-0.3, 0.4, -1.8] as [number, number, number], scale: [1.2, 1.2, 1] as [number, number, number], rotation: [0.03, 0.15, -0.08] as [number, number, number] },
+    { position: [0.3, -0.5, -2.2] as [number, number, number], scale: [1.0, 1.0, 1] as [number, number, number], rotation: [-0.03, -0.12, 0.1] as [number, number, number] },
+  ];
+
+  const mobileUrls = [heroTextureUrls[0], heroTextureUrls[1]];
+
+  return (
+    <>
+      <color attach="background" args={["#060606"]} />
+      <fog attach="fog" args={["#060606", 3, 8]} />
+      <ambientLight intensity={0.12} />
+      <pointLight position={[2, 3, 4]} intensity={2} color="#e8edf2" />
+      <pointLight position={[-2, -1, 2]} intensity={1} color="#c8b8a8" />
+      {mobileUrls.map((url, index) => (
+        <LiquidImagePlane key={url} url={url} index={index} {...mobilePlanes[index]} />
+      ))}
+    </>
+  );
+}
+
 export function WebGLBackground() {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const mq = window.matchMedia("(max-width: 767px)");
+    setIsMobile(mq.matches);
+    const handler = (e: MediaQueryListEvent) => setIsMobile(e.matches);
+    mq.addEventListener("change", handler);
+    return () => mq.removeEventListener("change", handler);
+  }, []);
+
   return (
     <div className="fixed-webgl-background">
       <Canvas
         camera={{ position: [0, 0, 4.8], fov: 42 }}
-        dpr={[1, 1.7]}
+        dpr={isMobile ? [1, 1] : [1, 1.7]}
         gl={{
-          antialias: true,
+          antialias: !isMobile,
           alpha: false,
           powerPreference: "high-performance",
           toneMapping: THREE.ACESFilmicToneMapping
         }}
       >
         <Suspense fallback={null}>
-          <CinematicScene />
+          {isMobile ? <MobileCinematicScene /> : <CinematicScene />}
         </Suspense>
       </Canvas>
     </div>
