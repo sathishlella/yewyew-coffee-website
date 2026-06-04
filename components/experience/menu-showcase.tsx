@@ -109,13 +109,13 @@ export function MenuShowcase() {
               />
 
               {/* Mobile Ambient Background */}
-              <div className="absolute inset-0 z-0 block md:hidden opacity-40">
+              <div className="absolute inset-0 z-0 block md:hidden">
                 <img 
                   src={item.image} 
                   alt={item.name} 
-                  className="h-full w-full object-cover mix-blend-luminosity grayscale-[30%]" 
+                  className="h-full w-full object-cover opacity-60 transition-opacity" 
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-black/20" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#060606] via-[#060606]/70 to-transparent" />
               </div>
 
               <div className="relative z-10 grid gap-7 lg:grid-cols-[1fr_auto] lg:items-end">
