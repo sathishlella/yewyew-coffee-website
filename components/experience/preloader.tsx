@@ -28,7 +28,7 @@ export function CinematicPreloader({ onComplete }: { onComplete: () => void }) {
     return () => window.clearInterval(timer);
   }, [onComplete]);
 
-  const plungeTransition = { duration: 1.2, ease: [0.76, 0, 0.24, 1] };
+  const plungeTransition = { duration: 1.2, ease: [0.76, 0, 0.24, 1] as const };
 
   return (
     <AnimatePresence>
