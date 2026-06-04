@@ -25,7 +25,7 @@ export function DynamicIslandNav() {
   return (
     <>
       <motion.header
-        className="fixed left-1/2 top-0 z-50"
+        className="fixed left-1/2 top-0 z-[1000]"
         style={{ width, y, x: "-50%" }}
       >
         <nav className="flex h-14 items-center justify-between rounded-full border border-white/12 bg-black/28 px-3 shadow-island backdrop-blur-md">
@@ -73,7 +73,7 @@ export function DynamicIslandNav() {
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
-            className="fixed inset-0 z-[49] flex flex-col items-center justify-center gap-6 bg-black/92 backdrop-blur-xl md:hidden"
+            className="fixed inset-0 z-[999] flex flex-col items-center justify-center gap-6 bg-black/92 backdrop-blur-xl md:hidden"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
