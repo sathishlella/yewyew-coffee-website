@@ -11,11 +11,14 @@ export function DynamicIslandNav() {
   const width = useTransform(scrollY, [0, 520], ["min(92vw, 760px)", "min(92vw, 560px)"]);
   const y = useTransform(scrollY, [0, 520], [24, 14]);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [isAndroid, setIsAndroid] = useState(false);
 
   const closeMobile = useCallback(() => setMobileOpen(false), []);
 
-  // Close mobile menu on resize to desktop
+  // Detect Android & close mobile menu on resize to desktop
   useEffect(() => {
+    setIsAndroid(/android/i.test(navigator.userAgent));
+
     const mq = window.matchMedia("(min-width: 768px)");
     const handler = () => { if (mq.matches) setMobileOpen(false); };
     mq.addEventListener("change", handler);
@@ -73,7 +76,7 @@ export function DynamicIslandNav() {
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
-            className="fixed inset-0 z-[999] flex flex-col items-center justify-center gap-6 bg-black/92 backdrop-blur-xl md:hidden"
+            className={`fixed inset-0 z-[999] flex flex-col items-center justify-center gap-6 md:hidden ${isAndroid ? "bg-black" : "bg-black/92 backdrop-blur-xl"}`}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
