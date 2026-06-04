@@ -115,7 +115,7 @@ export function MenuShowcase() {
               </div>
 
               {/* Content Wrapper */}
-              <div className="relative z-10 grid gap-7 lg:grid-cols-[1fr_auto] lg:items-end p-6 md:p-0 flex-1">
+              <div className="relative z-10 grid gap-4 md:gap-7 lg:grid-cols-[1fr_auto] lg:items-end p-4 md:p-0 flex-1">
                 <div>
                   <div className="flex items-center gap-3">
                     <span className="grid size-9 place-items-center rounded-full border border-white/10 bg-black/35">
@@ -125,19 +125,19 @@ export function MenuShowcase() {
                       {item.eyebrow}
                     </p>
                   </div>
-                  <h3 className="mt-7 max-w-2xl text-balance font-display text-[clamp(2.4rem,5.4vw,6rem)] font-black uppercase leading-[0.82] tracking-normal">
+                  <h3 className="mt-4 md:mt-7 max-w-2xl text-balance font-display text-[clamp(2.4rem,5.4vw,6rem)] font-black uppercase leading-[0.82] tracking-normal">
                     {item.name}
                   </h3>
-                  <p className="mt-5 max-w-2xl text-base leading-8 text-white/68">
+                  <p className="mt-3 md:mt-5 max-w-2xl text-sm md:text-base leading-7 md:leading-8 text-white/68">
                     {item.memory}
                   </p>
-                  <blockquote className="mt-5 max-w-xl border-l border-white/18 pl-4 font-mono text-[11px] uppercase leading-6 tracking-[0.18em] text-white/54">
+                  <blockquote className="mt-3 md:mt-5 max-w-xl border-l border-white/18 pl-4 font-mono text-[11px] uppercase leading-6 tracking-[0.18em] text-white/54">
                     {item.quote}
                   </blockquote>
                 </div>
                 <div className="flex items-end justify-between gap-8 lg:block lg:text-right mt-auto">
 
-                  <div className="mt-8 flex flex-wrap gap-2 lg:justify-end">
+                  <div className="mt-4 md:mt-8 flex flex-wrap gap-2 lg:justify-end">
                     {item.notes.map((note) => (
                       <span
                         key={note}
@@ -151,7 +151,7 @@ export function MenuShowcase() {
                     href="https://food.grab.com/my/en/restaurant/yew-yew-bangunan-ka-yin-delivery/1-C2UBRZLXE76WA2"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="mt-8 inline-flex size-11 items-center justify-center rounded-full border border-white/12 bg-white/8 transition group-hover:bg-porcelain group-hover:text-black shrink-0"
+                    className="mt-4 md:mt-8 inline-flex size-11 items-center justify-center rounded-full border border-white/12 bg-white/8 transition group-hover:bg-porcelain group-hover:text-black shrink-0"
                     aria-label={`Order ${item.name} on GrabFood`}
                   >
                     <ArrowUpRight className="size-5" />
