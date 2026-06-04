@@ -47,21 +47,7 @@ export function MenuShowcase() {
     });
 
     ctx.add("(max-width: 767px)", () => {
-      // On mobile, just do the card rotation without the massive yPercent overlap
-      cardRefs.current.forEach((card, index) => {
-        if (!card) return;
-        gsap.fromTo(
-          card,
-          { y: 20, rotateX: 5, rotateZ: index % 2 === 0 ? -1 : 1 },
-          {
-            y: 0, rotateX: 0, rotateZ: 0,
-            ease: "none",
-            scrollTrigger: {
-              trigger: card, start: "top 95%", end: "top 40%", scrub: 0.75
-            }
-          }
-        );
-      });
+      // Disabled GSAP card rotations on mobile to support native horizontal swipe carousel
     });
 
     return () => ctx.revert();
@@ -71,11 +57,11 @@ export function MenuShowcase() {
     <section
       ref={sectionRef}
       id="menu"
-      className="relative min-h-[180vh] px-4 py-28 md:py-40"
+      className="relative min-h-[180vh] px-0 py-28 md:px-4 md:py-40"
     >
       <ImageCursorTrail activeItem={activeItem} visible={trailVisible} />
       <div className="mx-auto grid max-w-7xl gap-10 md:grid-cols-[0.8fr_1.2fr]">
-        <div className="sticky top-28 h-fit">
+        <div className="sticky top-28 h-fit px-4 md:px-0">
           <p className="font-mono text-[10px] uppercase tracking-[0.42em] text-matcha">
             menu as memory
           </p>
@@ -89,14 +75,14 @@ export function MenuShowcase() {
           </p>
         </div>
 
-        <div className="menu-rail space-y-4">
+        <div className="menu-rail flex overflow-x-auto snap-x snap-mandatory gap-4 pb-8 px-4 md:block md:space-y-4 md:pb-0 md:px-0 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
           {menuItems.map((item, index) => (
             <motion.div
               key={item.id}
               ref={(node) => {
                 cardRefs.current[index] = node;
               }}
-              className="group relative overflow-hidden rounded-[8px] border border-white/12 bg-white/[0.055] p-5 shadow-[0_28px_120px_rgba(0,0,0,0.32)] backdrop-blur-xl md:p-8"
+              className="group relative overflow-hidden rounded-[20px] border border-white/12 bg-white/[0.055] shadow-[0_28px_120px_rgba(0,0,0,0.32)] backdrop-blur-xl shrink-0 w-[85vw] snap-center flex flex-col md:block md:w-auto md:rounded-[8px] md:p-8"
               onMouseEnter={() => {
                 setActiveItem(item);
                 setTrailVisible(true);
@@ -104,21 +90,21 @@ export function MenuShowcase() {
               onMouseLeave={() => setTrailVisible(false)}
             >
               <div
-                className="absolute right-0 top-0 h-44 w-44 opacity-30 blur-3xl transition group-hover:opacity-60"
+                className="absolute right-0 top-0 h-44 w-44 opacity-30 blur-3xl transition group-hover:opacity-60 hidden md:block"
                 style={{ backgroundColor: item.accent }}
               />
 
-              {/* Mobile Ambient Background */}
-              <div className="absolute inset-0 z-0 block md:hidden">
+              {/* Mobile-only Top Image */}
+              <div className="h-56 w-full shrink-0 md:hidden">
                 <img 
                   src={item.image} 
                   alt={item.name} 
-                  className="h-full w-full object-cover opacity-60 transition-opacity" 
+                  className="h-full w-full object-cover" 
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#060606] via-[#060606]/70 to-transparent" />
               </div>
 
-              <div className="relative z-10 grid gap-7 lg:grid-cols-[1fr_auto] lg:items-end">
+              {/* Content Wrapper */}
+              <div className="relative z-10 grid gap-7 lg:grid-cols-[1fr_auto] lg:items-end p-6 md:p-0 flex-1">
                 <div>
                   <div className="flex items-center gap-3">
                     <span className="grid size-9 place-items-center rounded-full border border-white/10 bg-black/35">
@@ -138,7 +124,7 @@ export function MenuShowcase() {
                     {item.quote}
                   </blockquote>
                 </div>
-                <div className="flex items-end justify-between gap-8 lg:block lg:text-right">
+                <div className="flex items-end justify-between gap-8 lg:block lg:text-right mt-auto">
 
                   <div className="mt-8 flex flex-wrap gap-2 lg:justify-end">
                     {item.notes.map((note) => (
@@ -154,7 +140,7 @@ export function MenuShowcase() {
                     href="https://food.grab.com/my/en/restaurant/yew-yew-bangunan-ka-yin-delivery/1-C2UBRZLXE76WA2"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="mt-8 inline-flex size-11 items-center justify-center rounded-full border border-white/12 bg-white/8 transition group-hover:bg-porcelain group-hover:text-black"
+                    className="mt-8 inline-flex size-11 items-center justify-center rounded-full border border-white/12 bg-white/8 transition group-hover:bg-porcelain group-hover:text-black shrink-0"
                     aria-label={`Order ${item.name} on GrabFood`}
                   >
                     <ArrowUpRight className="size-5" />
