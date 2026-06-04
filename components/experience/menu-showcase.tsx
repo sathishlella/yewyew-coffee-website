@@ -19,27 +19,19 @@ export function MenuShowcase() {
   const [trailVisible, setTrailVisible] = useState(false);
 
   useEffect(() => {
-    const ctx = gsap.context(() => {
+    let ctx = gsap.matchMedia();
+
+    ctx.add("(min-width: 768px)", () => {
       cardRefs.current.forEach((card, index) => {
         if (!card) return;
-        const depth = index + 1;
         gsap.fromTo(
           card,
+          { y: 40, rotateX: 18, rotateZ: index % 2 === 0 ? -2.5 : 2.5 },
           {
-            y: 40,
-            rotateX: 18,
-            rotateZ: index % 2 === 0 ? -2.5 : 2.5,
-          },
-          {
-            y: 0,
-            rotateX: 0,
-            rotateZ: index % 2 === 0 ? 1.3 : -1.3,
+            y: 0, rotateX: 0, rotateZ: index % 2 === 0 ? 1.3 : -1.3,
             ease: "none",
             scrollTrigger: {
-              trigger: card,
-              start: "top 95%",
-              end: "top 20%",
-              scrub: 0.75
+              trigger: card, start: "top 95%", end: "top 20%", scrub: 0.75
             }
           }
         );
@@ -49,13 +41,28 @@ export function MenuShowcase() {
         yPercent: -18,
         ease: "none",
         scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top bottom",
-          end: "bottom top",
-          scrub: 1
+          trigger: sectionRef.current, start: "top bottom", end: "bottom top", scrub: 1
         }
       });
-    }, sectionRef);
+    });
+
+    ctx.add("(max-width: 767px)", () => {
+      // On mobile, just do the card rotation without the massive yPercent overlap
+      cardRefs.current.forEach((card, index) => {
+        if (!card) return;
+        gsap.fromTo(
+          card,
+          { y: 20, rotateX: 5, rotateZ: index % 2 === 0 ? -1 : 1 },
+          {
+            y: 0, rotateX: 0, rotateZ: 0,
+            ease: "none",
+            scrollTrigger: {
+              trigger: card, start: "top 95%", end: "top 40%", scrub: 0.75
+            }
+          }
+        );
+      });
+    });
 
     return () => ctx.revert();
   }, []);
