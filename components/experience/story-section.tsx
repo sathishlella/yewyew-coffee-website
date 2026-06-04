@@ -44,13 +44,20 @@ function LiveRadio() {
                 ? { height: ["10%", "80%", "20%", "60%", "10%"] }
                 : { height: "5%" }
             }
-            transition={{
-              repeat: Infinity,
-              duration: 1.2 + (i % 3) * 0.4,
-              ease: "easeInOut",
-              times: [0, 0.25, 0.5, 0.75, 1],
-              delay: i * 0.1,
-            }}
+            transition={
+              isPlaying
+                ? {
+                    repeat: Infinity,
+                    duration: 1.2 + (i % 3) * 0.4,
+                    ease: "easeInOut",
+                    times: [0, 0.25, 0.5, 0.75, 1],
+                    delay: i * 0.1,
+                  }
+                : {
+                    duration: 0.4,
+                    ease: "easeOut",
+                  }
+            }
             className="w-full rounded-t-full bg-white"
           />
         ))}
