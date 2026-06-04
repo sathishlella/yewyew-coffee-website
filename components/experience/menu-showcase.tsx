@@ -61,7 +61,7 @@ export function MenuShowcase() {
     >
       <ImageCursorTrail activeItem={activeItem} visible={trailVisible} />
       <div className="mx-auto grid max-w-7xl gap-10 md:grid-cols-[0.8fr_1.2fr]">
-        <div className="sticky top-28 h-fit px-4 md:px-0">
+        <div className="relative md:sticky md:top-28 h-fit px-4 md:px-0 mb-8 md:mb-0">
           <p className="font-mono text-[10px] uppercase tracking-[0.42em] text-matcha">
             menu as memory
           </p>
