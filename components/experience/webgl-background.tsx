@@ -159,7 +159,7 @@ function MobileCinematicScene() {
       <pointLight position={[-2, -1, 2]} intensity={3} color="#c8b8a8" />
       <pointLight position={[0, 0, 1]} intensity={2} color="#ffffff" />
       {mobileUrls.map((url, index) => (
-        <LiquidImagePlane key={url} url={url} index={index} {...mobilePlanes[index]} brightness={2.0} />
+        <LiquidImagePlane key={url} url={url} index={index} {...mobilePlanes[index]} brightness={2.4} />
       ))}
     </>
   );
