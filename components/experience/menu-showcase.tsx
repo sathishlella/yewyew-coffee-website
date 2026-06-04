@@ -65,7 +65,7 @@ export function MenuShowcase() {
           <p className="font-mono text-[10px] uppercase tracking-[0.42em] text-matcha">
             menu as memory
           </p>
-          <h2 className="mt-5 max-w-lg font-display text-[clamp(3rem,7vw,7rem)] font-black uppercase leading-[0.82] tracking-normal mix-blend-difference">
+          <h2 className="mt-5 max-w-lg font-display text-[clamp(3rem,7vw,7rem)] font-black uppercase leading-[0.82] tracking-normal md:mix-blend-difference">
             small rituals, large feelings.
           </h2>
           <p className="mt-6 max-w-md text-sm leading-7 text-white/62">

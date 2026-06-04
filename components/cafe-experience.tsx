@@ -53,7 +53,7 @@ export function CafeExperience({ instagramImages = [] }: { instagramImages?: str
             <p className="font-mono text-[10px] uppercase tracking-[0.42em] text-sakura">
               reserve the quiet table
             </p>
-            <h2 className="mt-6 font-display text-[clamp(2.8rem,7vw,7rem)] font-black uppercase leading-[0.82] tracking-normal mix-blend-difference">
+            <h2 className="mt-6 font-display text-[clamp(2.8rem,7vw,7rem)] font-black uppercase leading-[0.82] tracking-normal md:mix-blend-difference">
               come before the soul craves peace.
             </h2>
             <a

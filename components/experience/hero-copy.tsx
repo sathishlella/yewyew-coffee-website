@@ -32,7 +32,7 @@ export function HeroCopy() {
           initial={{ clipPath: "inset(0 0 100% 0)" }}
           animate={{ clipPath: "inset(0 0 0% 0)" }}
           transition={{ delay: 0.9, duration: 1.2, ease: [0.76, 0, 0.24, 1] }}
-          className="text-balance font-display text-[clamp(3.4rem,12vw,11rem)] font-black uppercase leading-[0.73] tracking-normal mix-blend-difference"
+          className="text-balance font-display text-[clamp(3.4rem,12vw,11rem)] font-black uppercase leading-[0.73] tracking-normal md:mix-blend-difference"
           style={{ rotateX, transformStyle: "preserve-3d" }}
         >
           y ew y ew

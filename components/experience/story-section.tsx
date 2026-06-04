@@ -264,7 +264,7 @@ export function StorySection() {
             <p className="font-mono text-[10px] uppercase tracking-[0.42em] text-sakura">
               documentary soul
             </p>
-            <h2 className="mt-5 max-w-4xl font-display text-[clamp(3rem,8vw,8rem)] font-black uppercase leading-[0.82] tracking-normal mix-blend-difference">
+            <h2 className="mt-5 max-w-4xl font-display text-[clamp(3rem,8vw,8rem)] font-black uppercase leading-[0.82] tracking-normal md:mix-blend-difference">
               the shop remembers you back.
             </h2>
           </div>
