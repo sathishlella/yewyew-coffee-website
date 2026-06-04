@@ -7,7 +7,7 @@ export function HeroCopy() {
   const ref = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
   const rotateX = useTransform(scrollYProgress, [0, 1], [0, -42]);
-  const y = useTransform(scrollYProgress, [0, 1], [0, -180]);
+  const y = useTransform(scrollYProgress, [0, 1], [0, -350]);
   const opacity = useTransform(scrollYProgress, [0, 0.65], [1, 0.25]);
 
   return (
@@ -48,12 +48,22 @@ export function HeroCopy() {
             A room for people who remember that coffee is not just caffeine. It is a pause,
             a small ceremony, a way to let the day speak more gently.
           </p>
-          <a
+          <motion.a
             href="#menu"
-            className="rounded-full border border-white/14 bg-white/8 px-5 py-3 font-mono text-[10px] uppercase tracking-[0.24em] text-white/80 backdrop-blur transition hover:bg-white hover:text-black"
+            animate={{ 
+              boxShadow: ["0 0 0 0px rgba(255,255,255,0)", "0 0 0 8px rgba(255,255,255,0.06)", "0 0 0 0px rgba(255,255,255,0)"]
+            }}
+            transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+            className="group flex items-center gap-3 rounded-full border border-white/14 bg-white/8 px-6 py-3 font-mono text-[10px] uppercase tracking-[0.24em] text-white/80 backdrop-blur transition hover:bg-white hover:text-black"
           >
-            enter the menu
-          </a>
+            <span>enter the menu</span>
+            <motion.span 
+              animate={{ x: [0, 4, 0] }}
+              transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+            >
+              →
+            </motion.span>
+          </motion.a>
         </motion.div>
       </motion.div>
       <div className="pointer-events-none absolute bottom-8 left-1/2 h-20 w-px -translate-x-1/2 overflow-hidden bg-white/10">
