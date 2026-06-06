@@ -35,7 +35,7 @@ export function HeroCopy() {
           className="text-balance font-display text-[clamp(3.4rem,12vw,11rem)] font-black uppercase leading-[0.73] tracking-normal md:mix-blend-difference"
           style={{ rotateX, transformStyle: "preserve-3d" }}
         >
-          y ew y ew
+          y ēw y èw
           <span className="block text-[0.46em] leading-[0.9] tracking-[0.34em]">coffee</span>
         </motion.h1>
         <motion.div
