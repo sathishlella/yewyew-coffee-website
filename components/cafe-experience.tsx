@@ -57,7 +57,7 @@ export function CafeExperience({ instagramImages = [] }: { instagramImages?: str
               come before the soul craves peace.
             </h2>
             <a
-              href="https://wa.me/60123456789"
+              href="https://api.whatsapp.com/send?phone=601165631233"
               target="_blank"
               rel="noopener noreferrer"
               className="mt-10 inline-flex items-center gap-3 rounded-full bg-porcelain px-7 py-4 font-mono text-[10px] uppercase tracking-[0.24em] text-black transition hover:bg-chrome"
