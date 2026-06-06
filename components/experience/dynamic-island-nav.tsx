@@ -34,7 +34,7 @@ export function DynamicIslandNav() {
               <Coffee className="size-4 text-porcelain" />
             </span>
             <span className="font-mono text-[10px] uppercase tracking-[0.28em] text-white/78">
-              yewyew
+              yēwyèw
             </span>
           </a>
           {/* Desktop nav links */}

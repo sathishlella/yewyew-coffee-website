@@ -64,7 +64,7 @@ export default function FooterSection() {
               <Coffee className="size-5 text-porcelain" />
             </span>
             <span className="font-mono text-xs uppercase tracking-[0.28em] text-white/78 transition-colors group-hover:text-white">
-              yewyew
+              yēwyèw
             </span>
           </Link>
           <h2 className="mt-6 font-display text-[clamp(1.75rem,3.5vw,3.5rem)] font-black uppercase leading-[0.8] tracking-normal text-white">
