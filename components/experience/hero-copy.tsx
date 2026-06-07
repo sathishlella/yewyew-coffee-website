@@ -32,11 +32,12 @@ export function HeroCopy() {
           initial={{ clipPath: "inset(0 0 100% 0)" }}
           animate={{ clipPath: "inset(0 0 0% 0)" }}
           transition={{ delay: 0.9, duration: 1.2, ease: [0.76, 0, 0.24, 1] }}
-          className="text-balance font-display text-[clamp(3.4rem,12vw,11rem)] font-black uppercase leading-[0.73] tracking-normal md:mix-blend-difference"
+          className="font-display text-[clamp(4.5rem,16vw,14rem)] font-black lowercase leading-[0.95] tracking-[0.05em] md:mix-blend-difference"
           style={{ rotateX, transformStyle: "preserve-3d" }}
         >
-          y ēw y èw
-          <span className="block text-[0.46em] leading-[0.9] tracking-[0.34em]">coffee</span>
+          <span className="block">y ē w</span>
+          <span className="block">y è w</span>
+          <span className="block mt-6 text-[0.22em] uppercase leading-[0.9] tracking-[0.4em]">coffee</span>
         </motion.h1>
         <motion.div
           initial={{ opacity: 0, y: 24 }}
