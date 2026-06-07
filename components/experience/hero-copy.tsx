@@ -36,7 +36,7 @@ export function HeroCopy() {
           style={{ rotateX, transformStyle: "preserve-3d" }}
         >
           y ē w <span className="ml-2 md:ml-4">y è w</span>
-          <span className="block mt-4 text-[0.3em] uppercase leading-[0.9] tracking-[0.4em]">coffee</span>
+          <span className="block mt-8 text-[0.3em] uppercase leading-[0.9] tracking-[0.4em]">coffee</span>
         </motion.h1>
         <motion.div
           initial={{ opacity: 0, y: 24 }}
